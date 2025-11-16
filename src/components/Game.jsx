@@ -31,6 +31,7 @@ export function Game(props) {
         if (clickedCards.has(name)) {
             props.endRound();
             resetGame();
+            randomizeLocation();
             return;
         }
 
