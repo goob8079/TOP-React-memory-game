@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Card } from "./Card";
 import { cardData } from "./cardData";
+import '../css/Game.css';
 
-export function Game({ reset, endRound, increaseScore }) {
+export function Game(props) {
     // location is initially set to an array of the cardData's indexes
     const [locations, setLocations] = useState(
         cardData.map((value, index) => index)
@@ -28,12 +29,13 @@ export function Game({ reset, endRound, increaseScore }) {
 
     function handleCardClick(name) {
         if (clickedCards.has(name)) {
-            endRound();
+            props.endRound();
+            resetGame();
             return;
         }
 
         setClickedCards(prev => new Set(prev).add(name));
-        increaseScore();
+        props.increaseScore();
         randomizeLocation();
     }
 
@@ -43,14 +45,14 @@ export function Game({ reset, endRound, increaseScore }) {
 
     return (
         <div className="game-grid">
-            {locations.map((location) => {
+            {locations.map((index) => {
                 return (
-                    <Card 
-                        key={cardData[location].id}
-                        img={cardData[location].img}
-                        name={cardData[location].name}
-                        isClicked={clickedCards.has(cardData[location].name)}
-                        onClick={() => handleCardClick(cardData[location].name)}
+                    <Card
+                        key={cardData[index].id} 
+                        img={cardData[index].img}
+                        name={cardData[index].name}
+                        isClicked={clickedCards.has(cardData[index].name)}
+                        onClick={() => handleCardClick(cardData[index].name)}
                     />
                 );
             })}

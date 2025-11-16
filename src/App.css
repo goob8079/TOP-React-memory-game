@@ -1,0 +1,11 @@
+.header {
+    display: flex; justify-content: space-between; align-items: center;
+    color: white;
+    padding: 12px;
+}
+
+@media (max-width: 450px) {
+    .header {
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }
+}

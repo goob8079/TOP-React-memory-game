@@ -1,0 +1,10 @@
+.game-grid {
+    display: grid; justify-content: center; align-items: center; gap: 12px;
+    grid-template-rows: 1fr 1fr; grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 900px) {
+    .game-grid {
+        display: flex; flex-direction: column;
+    }    
+}
